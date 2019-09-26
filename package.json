@@ -1,0 +1,14 @@
+{
+  "name": "api-endpoints",
+  "version": "1.0.0",
+  "description": "A CRUD API with node.js/express.js",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
