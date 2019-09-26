@@ -25,6 +25,20 @@ app.get("/", (request, response) => {
   response.json(fake_database);
 });
 
+app.get("/user/:id", (request, response) => {
+  //get the id parameter
+  const { id } = request.params;
+
+  //filter the database for the user that matches params
+  const searchUsersById = fake_database.filter((user) =>{
+    if(user.id === +id) return user;
+  });
+
+  //send 
+  response.json(searchUsersById);
+
+});
+
 app.post("/user/new/", (request, response) =>{
   //retrieve name and age from request.body
   const { name, age } = request.body;
