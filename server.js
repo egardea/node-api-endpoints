@@ -39,6 +39,23 @@ app.get("/user/:id", (request, response) => {
 
 });
 
+app.put("/user/update/name/", (request, response) => {
+  //get the ID and name from the body
+  const { id, name } = request.body;
+
+  //loop through the database
+  fake_database.forEach((user) => {
+    if(user.id === +id){
+      user.name = name;
+    }
+  });
+
+  //send
+  response.json({ success: true });
+
+
+});
+
 app.post("/user/new/", (request, response) =>{
   //retrieve name and age from request.body
   const { name, age } = request.body;
@@ -58,6 +75,20 @@ app.post("/user/new/", (request, response) =>{
 
   //send success back in the response
   response.json({ success: true });
+});
+
+app.delete("/user/delete/:id", (request, response) => {
+  //get id parameter
+  const { id } = request.params;
+
+  //filter through the database and delete the user
+  const findIndexToDelete = fake_database.findIndex((user) => user.id === +id);
+
+  //and remove the user that matches
+  fake_database.splice(findIndexToDelete, 1);
+
+  response.json({ success: true });
+
 });
 
 app.listen(3000, () => {
